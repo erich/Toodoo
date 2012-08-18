@@ -1,0 +1,40 @@
+GIT
+  remote: git://github.com/soveran/cuba.git
+  revision: 14787306a3afffca860729bb63fe5e29096cc823
+  specs:
+    cuba (3.1.0)
+      rack
+
+GEM
+  remote: http://gems.github.com/
+  specs:
+    coderay (1.0.6)
+    ffi (1.0.11)
+    guard (1.2.3)
+      listen (>= 0.4.2)
+      thor (>= 0.14.6)
+    listen (0.4.7)
+      rb-fchange (~> 0.0.5)
+      rb-fsevent (~> 0.9.1)
+      rb-inotify (~> 0.8.8)
+    method_source (0.7.1)
+    pry (0.9.8.4)
+      coderay (~> 1.0.5)
+      method_source (~> 0.7.1)
+      slop (>= 2.4.4, < 3)
+    rack (1.4.1)
+    rb-fchange (0.0.5)
+      ffi
+    rb-fsevent (0.9.1)
+    rb-inotify (0.8.8)
+      ffi (>= 0.5.0)
+    slop (2.4.4)
+    thor (0.15.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  cuba!
+  guard
+  pry

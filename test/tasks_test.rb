@@ -4,7 +4,7 @@ require "cuba/test"
 #Reopen Cutest class to add assert_match
 class Cutest::Scope
 	private
-	#last_response.body returns string, don't want to write exact whole string to make test past
+	#last_response.body returns string, don't want to write exact whole string to make test pass
 	def assert_match(value, other)
 		flunk("#{value.inspect} =~ #{other.inspect}") unless other =~ Regexp.new(value)
 		success

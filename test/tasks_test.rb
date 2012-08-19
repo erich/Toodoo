@@ -1,4 +1,4 @@
-require_relative './../hello_world.rb'
+require_relative './../tasks.rb'
 require "cuba/test"
 
 #Reopen Cutest class to add assert_match
@@ -28,17 +28,11 @@ scope do
 	test "Adding new valid task" do
 		post "/tasks"
 		follow_redirect!
-		assert_match "Task was added successfully", last_response.body
+		assert_match "Task was successfully added", last_response.body
 	end
 
-	test "Adding new invalid task" do
-		post "/tasks"
-		follow_redirect!
-		assert_match "Task is not valid", last_response.body
-	end
-
-	test "Edit new task" do
-		get "/tasks/1" 
-		assert_match "New task", last_response
+	test "Edit task" do
+		get "/tasks/1/edit" 
+		assert_match "Edit task", last_response.body
 	end
 end

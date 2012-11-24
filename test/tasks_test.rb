@@ -13,11 +13,6 @@ end
 
 scope do
 
-	setup do 
-		@valid_task = ""
-		@invalid_task = ""
-	end
-
   test "Homepage" do
     get "/"
     follow_redirect!

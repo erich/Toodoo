@@ -1,4 +1,10 @@
 require "cuba"
+require "cuba/render"
+require "slim"
+
+Cuba.plugin Cuba::Render
+Cuba.settings[:template_engine] = "slim"
+Cuba.settings[:render][:views] ||= File.expand_path("views", Dir.pwd)
 
 Cuba.use Rack::Session::Cookie
 Cuba.define do
@@ -8,10 +14,14 @@ Cuba.define do
 		end
 
 		on "tasks" do
-			res.write "List of tasks <br/> Add new task + #{session[:message]}"
+			res.write render("views/index.slim", content: session[:message])
 
 			on ":id/edit" do
 				res.write "Edit task"
+			end
+			
+			on "new" do
+				res.write render("new.slim")
 			end
 
 		end

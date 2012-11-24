@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title Slim Examples
+    meta name="keywords" content="template language"
+
+  body
+    h1 List of tasks
+		ul
+			li.first: a[href="/tasks/new"] New tasks
+		p
+			h2 id="message" 
+				= "#{content}"

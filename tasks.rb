@@ -7,6 +7,7 @@ Cuba.settings[:template_engine] = "slim"
 Cuba.settings[:render][:views] ||= File.expand_path("views", Dir.pwd)
 
 Cuba.use Rack::Session::Cookie
+
 Cuba.define do
 	on get do
 		on root do
@@ -21,7 +22,7 @@ Cuba.define do
 			end
 			
 			on "new" do
-				res.write render("new.slim")
+				res.write render("views/new.slim", content: session[:message])
 			end
 
 		end

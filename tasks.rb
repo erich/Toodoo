@@ -2,9 +2,8 @@ require "cuba"
 require "cuba/render"
 require "slim"
 
-Cuba.plugin Cuba::Render
-Cuba.settings[:template_engine] = "slim"
-Cuba.settings[:render][:views] ||= File.expand_path("views", Dir.pwd)
+require_relative 'config/views'
+
 
 Cuba.use Rack::Session::Cookie
 

@@ -1,23 +1,15 @@
-doctype html
-html
-  head
-    title Slim Examples
-    meta name="keywords" content="template language"
-    meta name="author" content="ek"
+= render 'views/header.slim' 
+body
+  h1 Adding new task
+  ul
+    li: a[href="/tasks/new"] New task
 
-  body
-    h1 Adding new task
-    ul
-      li: a[href="/tasks/new"] New task
+  h2 id="message" 
+    = "#{content}"
 
-    h2 id="message" 
-      = "#{content}"
-
-    #content
-      p This example shows you how a basic Slim file looks like.
+  #content
+    p This example shows you how a basic Slim file looks like.
 
 
 
-    div id="footer"
-      /= render 'footer'
-      /| Copyright © #{year} #{author}
+= render 'views/footer.slim'

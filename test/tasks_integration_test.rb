@@ -2,10 +2,13 @@ require "cuba/capybara"
 require_relative './../tasks.rb'
 
 scope do
-  test "Homepage" do
+  test "Add new task" do
     visit "/"
-    assert has_content?("List of tasks")
 		click_link "New task" 
-		assert_equal current_path, '/tasks/new'
+    within("#new_task") do 
+      fill_in 'Name', :with => 'New task from Capybara'
+    end
+    click_on 'Add'
+    assert_has_content?("New task from Capybara")
   end
 end

@@ -1,11 +1,8 @@
-= render 'views/header.slim' 
 body
   h1 Adding new task
-  = render 'views/menu.slim'
+  == render 'views/menu.slim'
 
   #content
-    p This example shows you how a basic Slim file looks like.
-
-
-
-= render 'views/footer.slim'
+   form action='posts' method='post'
+    input type='text' name='name'
+    input type='submit' value='Add'

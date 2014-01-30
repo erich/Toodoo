@@ -7,6 +7,6 @@ scope do
 		click_link "New task" 
     fill_in 'name', :with => 'New task from Capybara'
     click_on 'Add'
-    assert_has_content?("New task from Capybara")
+    assert has_content?("New task from Capybara")
   end
 end

@@ -14,7 +14,8 @@ Cuba.define do
 		end
 
 		on "tasks" do
-			res.write render("views/index.slim", content: session[:message])
+			#res.write view('index', content: session[:message])
+			res.write render('views/index.slim', content: session[:message])
 
 			on ":id/edit" do
 				res.write "Edit task"

@@ -1,13 +1,9 @@
-= render 'views/header.slim'
 body
+  == render 'views/menu.slim'
   h1 List of tasks
-  ul
-    li: a[href="/tasks/new"] New task
 
   h2 id="message" 
     = "#{content}"
 
   #content
     p This example shows you how a basic Slim file looks like.
-
-= render 'views/footer.slim'

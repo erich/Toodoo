@@ -5,9 +5,7 @@ scope do
   test "Add new task" do
     visit "/"
 		click_link "New task" 
-    within("#new_task") do 
-      fill_in 'Name', :with => 'New task from Capybara'
-    end
+    fill_in 'name', :with => 'New task from Capybara'
     click_on 'Add'
     assert_has_content?("New task from Capybara")
   end

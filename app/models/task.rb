@@ -11,7 +11,7 @@ class Task
 	attr_accessor :name, :created_at, :completed_at
 
 	def initialize(name)
-		@name = eame
+		@name = name
 		@created_at = Time.now
 	end
 

@@ -1,9 +1,19 @@
 require 'pstore'
 
 class TaskPstore 
-	def self.save(task)
-		true
-	end
+  def self.save(task, id)
+    task_pstore = PStore.new('db/toodoo.pstore')
+    task_pstore.transaction do 
+      task_pstore[id] = task
+    end
+  end
+
+  def self.find(id)
+    task_pstore = PStore.new('db/toodoo.pstore')
+    task_pstore.transaction(true) do
+      task_pstore[id]
+    end
+  end
 end
 
 class Task
@@ -23,8 +33,12 @@ class Task
 		!!@completed_at
 	end
 
-	def self.save(name)
-		TaskPstore.save(new(name))
+	def self.save(name, id)
+		TaskPstore.save(new(name), id)
 	end
+
+  def self.find(id)
+    TaskPstore.find(id)
+  end
 end
 

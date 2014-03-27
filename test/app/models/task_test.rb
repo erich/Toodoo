@@ -38,12 +38,11 @@ class TestTaskPstore <  MiniTest::Unit::TestCase
 
   def tests_generating_uniq_id
   end
-	def test_saves_task
-		task = Task.new('test')
-		assert_equal Task.save(task), true
-	end
 
-	def tests_finds_task
+	def test_saves_and_finds_task
+    Task.save('task with name test', 23)
+    found_task = Task.find(23)
+	  assert_equal 'task with name test', found_task.name	
 	end
 
 	def tests_finds_all_tasks

@@ -46,11 +46,16 @@ class TestTaskPstore <  MiniTest::Unit::TestCase
 	end
 
 	def tests_finds_all_tasks
+    task_one = Task.save('task #1', 23)
+    task_two = Task.save('task #2', 24)
+    all_tasks_names = Task.all.collect(&:name)
+    assert_includes all_tasks_names, task_one.name
+    assert_includes all_tasks_names, task_two.name
 	end
 
 	def test_updates_task
 	end
 
-	def test_deletes_task
+	def test_complete_task
 	end
 end

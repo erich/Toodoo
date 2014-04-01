@@ -14,6 +14,16 @@ class TaskPstore
       task_pstore[id]
     end
   end
+
+  def self.all
+    task_pstore = PStore.new('db/toodoo.pstore')
+    all_tasks = task_pstore.transaction(true) do 
+     task_pstore.roots.inject([]) do |array, task_id| 
+        array << task_pstore[task_id]
+      end
+    end
+    all_tasks
+  end
 end
 
 class Task
@@ -39,6 +49,10 @@ class Task
 
   def self.find(id)
     TaskPstore.find(id)
+  end
+
+  def self.all
+    TaskPstore.all
   end
 end
 

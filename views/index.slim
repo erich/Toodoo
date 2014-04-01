@@ -6,4 +6,7 @@ body
     = "#{content}"
 
   #content
-    p This example shows you how a basic Slim file looks like.
+    p All tasks
+    - for task in tasks do
+      tr
+        td.name = task.name

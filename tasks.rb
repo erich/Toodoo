@@ -6,7 +6,7 @@ require_relative 'config/views'
 require_relative 'app/models/task.rb'
 
 
-Cuba.use Rack::Session::Cookie
+Cuba.use Rack::Session::Cookie, secret: 'as131*)Dasd'
 
 Cuba.define do
 	on get do

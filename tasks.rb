@@ -10,9 +10,6 @@ Cuba.use Rack::Session::Cookie, secret: 'as131*)Dasd'
 
 Cuba.define do
 	on get do
-		on root do
-			res.redirect "/tasks"
-		end
 
 		on "tasks" do
 			res.write render('views/index.slim', content: session[:message], tasks: Task.all)
@@ -25,6 +22,10 @@ Cuba.define do
 				res.write render("views/new.slim", content: session[:message])
 			end
 
+		end
+
+		on root do
+			res.redirect "/tasks"
 		end
 
 	end

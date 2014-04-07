@@ -15,23 +15,24 @@ scope do
 
   test "Homepage" do
     get "/"
-
     follow_redirect!
-
     assert_match  "List of tasks", last_response.body
   end
 
 
 	test "Adding new valid task" do
 		post "/tasks", name: 'test'
-
 		follow_redirect!
-
 		assert_match "Task was successfully added", last_response.body
 	end
-#
-#	test "Edit task" do
-#		get "/tasks/1/edit" 
-#		assert_match "Edit task", last_response.body
-#	end
+
+	test "Adding new invalid task" do
+		post "/tasks", name: ' '
+		assert_match "Adding new task", last_response.body
+	end
+
+	test "Edit task" do
+		get "/tasks/1/edit" 
+		assert_match "Edit task", last_response.body
+	end
 end

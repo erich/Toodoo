@@ -4,6 +4,7 @@ require "slim"
 
 require_relative 'config/views'
 require_relative 'app/models/task.rb'
+require_relative 'app/validators/store_task_validator.rb'
 
 
 Cuba.use Rack::Session::Cookie, secret: 'as131*)Dasd'
@@ -33,9 +34,13 @@ Cuba.define do
 	on post do
 		on "tasks" do
       on param('name') do |name|
-        Task.save(name, 123123)
-        session[:message] = "Task was successfully added"
-        res.redirect "/tasks"
+        if StoreTaskValidator.new(Task.new(name.strip)).valid?
+          Task.save(name, 123123)
+          session[:message] = "Task was successfully added"
+          res.redirect "/tasks"
+        else
+          res.write render("views/new.slim", content: session[:message])
+        end
       end
 		end
 	end

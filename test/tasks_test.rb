@@ -3,12 +3,12 @@ require_relative './../tasks.rb'
 
 #Reopen Cutest class to add assert_match
 class Cutest::Scope
-	private
-	#last_response.body returns string, don't want to write exact whole string to make test pass
-	def assert_match(value, other)
-		flunk("#{value.inspect} =~ #{other.inspect}") unless other =~ Regexp.new(value)
-		success
-	end
+  private
+  #last_response.body returns string, don't want to write exact whole string to make test pass
+  def assert_match(value, other)
+    flunk("#{value.inspect} =~ #{other.inspect}") unless other =~ Regexp.new(value)
+    success
+  end
 end
 
 scope do
@@ -20,19 +20,19 @@ scope do
   end
 
 
-	test "Adding new valid task" do
-		post "/tasks", name: 'test'
-		follow_redirect!
-		assert_match "Task was successfully added", last_response.body
-	end
+  test "Adding new valid task" do
+    post "/tasks", name: 'test'
+    follow_redirect!
+    assert_match "Task was successfully added", last_response.body
+  end
 
-	test "Adding new invalid task" do
-		post "/tasks", name: ' '
-		assert_match "Adding new task", last_response.body
-	end
+  test "Adding new invalid task" do
+    post "/tasks", name: ' '
+    assert_match "Adding new task", last_response.body
+  end
 
-	test "Edit task" do
-		get "/tasks/1/edit" 
-		assert_match "Edit task", last_response.body
-	end
+  test "Edit task" do
+    get "/tasks/1/edit" 
+    assert_match "Edit task", last_response.body
+  end
 end

@@ -28,24 +28,24 @@ end
 
 class Task
 
-	attr_accessor :name, :created_at, :completed_at
+  attr_accessor :name, :created_at, :completed_at
 
-	def initialize(name)
-		@name = name
-		@created_at = Time.now
-	end
+  def initialize(name)
+    @name = name
+    @created_at = Time.now
+  end
 
-	def complete!
-		@completed_at = Time.now
-	end
+  def complete!
+    @completed_at = Time.now
+  end
 
-	def completed?
-		!!@completed_at
-	end
+  def completed?
+    !!@completed_at
+  end
 
-	def self.save(name, id)
-		TaskPstore.save(new(name), id)
-	end
+  def self.save(name, id)
+    TaskPstore.save(new(name), id)
+  end
 
   def self.find(id)
     TaskPstore.find(id)

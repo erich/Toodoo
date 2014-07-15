@@ -1,4 +1,4 @@
-:equire "cuba"
+require "cuba"
 require "cuba/render"
 require "slim"
 
